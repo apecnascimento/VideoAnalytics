@@ -46,7 +46,7 @@ def thumbs_down(request):
 
 
 
-@view_config(route_name='list_score', renderer='templates/videos/score.jinja', request_method='GET')
+@view_config(route_name='list_score', renderer='templates/videos/score.jinja2', request_method='GET')
 def list_score(request):
     pipeline =     [
         {"$project": {"theme": 1, "score":{"$subtract":["$thumbs_up", { "$divide": ["$thumbs_down",2]}]} } },
