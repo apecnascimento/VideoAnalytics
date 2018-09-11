@@ -1,5 +1,6 @@
 from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPFound 
+from bson.son import SON
 
 
 @view_config(route_name='videos', renderer='templates/videos/index.jinja2', request_method='GET')
@@ -45,4 +46,15 @@ def thumbs_down(request):
 
 
 
+@view_config(route_name='list_score', renderer='templates/videos/score.jinja', request_method='GET')
+def list_score(request):
+    pipeline =     [
+        {"$project": {"theme": 1, "score":{"$subtract":["$thumbs_up", { "$divide": ["$thumbs_down",2]}]} } },
+        { "$group": { "_id": "$theme", "total_score": { "$sum" : "$score" }} },
+        { "$sort": { "total_score": -1 } }        
+    ]
+    scores = request.db_video_analytics.videos.aggregate(pipeline)
+
+    return {'scores': scores}
+   
 
