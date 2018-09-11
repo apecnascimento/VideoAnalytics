@@ -1,2 +1,2 @@
 def includeme(config):
-    pass
+    config.add_route('videos', '/videos/')
