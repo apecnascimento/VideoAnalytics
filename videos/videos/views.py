@@ -10,7 +10,7 @@ def list_videos(request):
 
 @view_config(route_name='new_video', renderer='templates/videos/new.jinja2', request_method='GET')
 def new_video(request):
-    return {'teste':''}
+    return {}
 
 
 @view_config(route_name='create_video', request_method='POST')
@@ -24,10 +24,10 @@ def create_video(request):
 def thumbs_up(request):
     video_name = request.matchdict.get('name', None)
     if video_name:
-        video = request.db_video_analytics.videos.find_one({'name': name}, {'_id': False})
+        video = request.db_video_analytics.videos.find_one({'name': video_name}, {'_id': False})
         if video:
             thumbs_up = video['thumbs_up'] + 1
-            request.db_video_analytics.videos.update_one({'name': name}, {"$set":{"thumbs_up":thumbs_up}})
+            request.db_video_analytics.videos.update_one({'name': video_name}, {"$set":{"thumbs_up":thumbs_up}})
             
     return HTTPFound(request.route_url('videos'))
 
@@ -36,10 +36,10 @@ def thumbs_up(request):
 def thumbs_down(request):
     video_name = request.matchdict.get('name', None)
     if video_name:
-        video = request.db_video_analytics.videos.find_one({'name': name}, {'_id': False})
+        video = request.db_video_analytics.videos.find_one({'name': video_name}, {'_id': False})
         if video:
             thumbs_down = video['thumbs_down'] + 1
-            request.db_video_analytics.videos.update_one({'name': name}, {"$set":{"thumbs_down":thumbs_up}})
+            request.db_video_analytics.videos.update_one({'name': video_name}, {"$set":{"thumbs_down":thumbs_down}})
             
     return HTTPFound(request.route_url('videos'))
 
