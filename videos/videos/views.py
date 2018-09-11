@@ -32,5 +32,17 @@ def add_video(request):
     return HTTPFound(request.route_url('videos'))
 
 
+@view_config(route_name='thumbs_down', request_method='POST')
+def add_video(request):
+    video_name = request.matchdict.get('name', None)
+    if video_name:
+        video = request.db_video_analytics.videos.find_one({'name': name}, {'_id': False})
+        if video:
+            thumbs_down = video['thumbs_down'] + 1
+            request.db_video_analytics.videos.update_one({'name': name}, {"$set":{"thumbs_down":thumbs_up}})
+            
+    return HTTPFound(request.route_url('videos'))
+
+
 
 
