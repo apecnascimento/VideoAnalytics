@@ -17,6 +17,6 @@ def add_video(request):
 def add_video(request):
     name = request.params['name'].decode('utf-8')
     theme = request.params['theme'].decode('utf-8')
-    request.db_video_analytics.insert_one({'name': name, 'theme': theme})
+    request.db_video_analytics.insert_one({'name': name, 'theme': theme, 'thumbs_up':0, 'thumbs_down':0})
     return HTTPFound(request.route_url('videos'))
 
