@@ -15,9 +15,9 @@ def new_video(request):
 
 @view_config(route_name='create_video', request_method='POST')
 def create_video(request):
-    name = request.params['name'].decode('utf-8')
-    theme = request.params['theme'].decode('utf-8')
-    request.db_video_analytics.insert_one({'name': name, 'theme': theme, 'thumbs_up':0, 'thumbs_down':0})
+    name = request.params['name']
+    theme = request.params['theme']
+    request.db_video_analytics.videos.insert_one({'name': name, 'theme': theme, 'thumbs_up':0, 'thumbs_down':0})
     return HTTPFound(request.route_url('videos'))
 
 @view_config(route_name='thumbs_up', request_method='POST')
