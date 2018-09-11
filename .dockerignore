@@ -1,0 +1,4 @@
+.vscode/
+Pipfile.lock
+Pipfile
+docker-compose.yml
