@@ -1,5 +1,7 @@
+version: "2.0"
+
 volumes:
- mongo-data
+ mongo-data:
 
 services:
   mongo:
@@ -12,3 +14,12 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: deepersystems
       MONGO_INITDB_ROOT_PASSWORD: deepersystems
+  
+  web_app:
+    build: .
+    ports:
+      - 8000:8000
+    links:
+      - mongo
+
+  

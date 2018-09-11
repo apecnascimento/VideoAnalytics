@@ -26,7 +26,6 @@ repoze.lru==0.7
 six==1.11.0
 translationstring==1.3
 venusian==1.1.0
--e git+https://github.com/apecnascimento/VideoAnalytics.git@4a9af1195c06e106a000a816d662ad86ad42ba1c#egg=videos&subdirectory=videos
 waitress==1.1.0
 WebOb==1.8.2
 WebTest==2.0.30

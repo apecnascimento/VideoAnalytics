@@ -3,6 +3,7 @@ from pyramid.httpexceptions import HTTPFound
 from bson.son import SON
 
 
+
 @view_config(route_name='videos', renderer='templates/videos/index.jinja2', request_method='GET')
 def list_videos(request):
     videos = request.db_video_analytics.videos.find({}, {'_id': False})
@@ -18,7 +19,9 @@ def new_video(request):
 def create_video(request):
     name = request.params['name']
     theme = request.params['theme']
-    request.db_video_analytics.videos.insert_one({'name': name, 'theme': theme, 'thumbs_up':0, 'thumbs_down':0})
+    video = request.db_video_analytics.videos.find_one({'name': name}, {'_id': False})
+    if not video:
+        request.db_video_analytics.videos.insert_one({'name': name, 'theme': theme, 'thumbs_up':0, 'thumbs_down':0})
     return HTTPFound(request.route_url('videos'))
 
 @view_config(route_name='thumbs_up', request_method='POST')

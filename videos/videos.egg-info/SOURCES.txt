@@ -18,8 +18,7 @@ videos.egg-info/top_level.txt
 videos/static/pyramid-16x16.png
 videos/static/pyramid.png
 videos/static/theme.css
-videos/templates/layout.html
 videos/templates/layout.jinja2
-videos/templates/mytemplate.jinja2
-videos/templates/videos/index.html
-videos/templates/videos/new.html
+videos/templates/videos/index.jinja2
+videos/templates/videos/new.jinja2
+videos/templates/videos/score.jinja2
