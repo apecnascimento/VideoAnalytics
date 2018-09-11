@@ -1,0 +1,14 @@
+volumes:
+ mongo-data
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+     - 27017:27017
+    volumes:
+     - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: deepersystems
+      MONGO_INITDB_ROOT_PASSWORD: deepersystems
