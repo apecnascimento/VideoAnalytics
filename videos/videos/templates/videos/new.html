@@ -1,0 +1,10 @@
+{% include 'layout.html'%}
+{% block content %}
+<form action="/videos/new/create/" method="post">
+    <label for="name">Name:</label>
+    <input type="text" name="name">
+    <label for="name">Theme:</label>
+    <input type="text" name="theme">
+    <button type="submit">Create</button>
+</form>
+{% endblock %}
