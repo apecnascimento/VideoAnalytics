@@ -6,8 +6,14 @@ name = "pypi"
 [packages]
 pyramid = "*"
 "pyramid-mongodb2" = "*"
+"pyramid-jinja2" = "*"
+pyramid-debugtoolbar = "*"
+waitress = "*"
 
 [dev-packages]
+webtest = "*"
+pytest = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.6"

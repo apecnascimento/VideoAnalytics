@@ -1,0 +1,27 @@
+{% include 'templates/layout.jinja2' %}
+{%block content%}
+
+
+{% endblock %}
+
+
+<div class="row">
+    <div class="col text-center">
+        <a class="btn btn-success" href="/videos/new/"><i class="fas fa-plus"></i></a>
+    </div>
+    <div class="col-5">
+    
+        <ul class="list-group">
+            {% for video in videos %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{video['name']}}    -    {{video['theme']}}
+                    <form action="/videos/thumbs-up/teste1/" method="post"><button type="submit"><i class="far fa-thumbs-up"></i></button></form>
+                    <form action="/videos/thumbs-down/teste2/" method="post"><button type="submit"><i class="far fa-thumbs-down"></i></button></form>                
+                </li>
+            {% endfor %}
+            
+        </ul>
+    </div>
+    <div class="col">
+    </div>
+</div>
